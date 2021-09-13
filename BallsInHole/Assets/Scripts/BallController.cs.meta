@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 578e04c179ba6f548935f954207d1bb9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rb: {instanceID: 0}
+  - score_txt: {instanceID: 0}
+  - GameOverPanel: {fileID: 4889233713275562571, guid: 387eafb236df8434d82182d00c104e4a, type: 3}
+  - RetryPanel: {fileID: 4235006520729663053, guid: 4e880a78f2eb00342a5aeec19770d439, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

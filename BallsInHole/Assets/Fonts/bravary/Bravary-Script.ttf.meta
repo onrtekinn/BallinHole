@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ca277bc579784d04cbc9bf76258aa089
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Bravary
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c9523d089d10741408ba00d487ff2ed5, type: 3}
+  - {fileID: 12800000, guid: 84ae6f66fb42ff04f9b2a0617324759e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
