@@ -1,2 +1,2 @@
 # BallinHole
-A game Created with Unity3D
+A puzzle game created with Unity3D
