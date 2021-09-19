@@ -22,8 +22,8 @@ public class ButtonManager : MonoBehaviour
 		//SceneManager.LoadScene(LevelSelect);
 	}
     void TaskOnClickReplay(){
-		int scene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+		string scene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(scene,LoadSceneMode.Single);
 	}
     void TaskOnClickJump(){
 		//SceneManager.LoadScene(LevelSelect);

@@ -155,7 +155,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9819726}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -1065,7 +1065,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457713288}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -2295,8 +2295,8 @@ MonoBehaviour:
     m_Bits: 64
   speed: 5
   score_txt: {fileID: 1039072649}
-  GameOverPanel: {fileID: 0}
-  RetryPanel: {fileID: 0}
+  GameOverPanel: {fileID: 1341545675}
+  RetryPanel: {fileID: 1759731061}
 --- !u!54 &974280608
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2590,7 +2590,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139109180}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -3250,6 +3250,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316289160}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1341545675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4889233713275562571, guid: 387eafb236df8434d82182d00c104e4a, type: 3}
+  m_PrefabInstance: {fileID: 4889233713249164326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1343541361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3550,7 +3555,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574650213}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -3646,7 +3651,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588657451}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -3905,6 +3910,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619418456}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1759731061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4235006520729663053, guid: 4e880a78f2eb00342a5aeec19770d439, type: 3}
+  m_PrefabInstance: {fileID: 4235006520732003616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1899774604
 GameObject:
   m_ObjectHideFlags: 0
@@ -4312,7 +4322,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044506338}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -4598,7 +4608,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083129707}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -4789,7 +4799,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127231189}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2

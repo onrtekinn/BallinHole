@@ -70,7 +70,7 @@ public class HoleController : MonoBehaviour
         }
          if(up)
         {
-            rb.MovePosition(transform.position -transform.right * Time.deltaTime * speed);
+            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
             //rb.velocity=Vector3.forward*speed;
 
         }

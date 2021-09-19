@@ -7,7 +7,7 @@ public class BallController : MonoBehaviour
 {
     public Rigidbody rb;
     public LayerMask fences;
-    //private GameObject[] icecubes;
+    private GameObject[] icecubes;
     //private GameObject[]coins;
     int score=0;
     public float speed =5.0f;
@@ -62,6 +62,7 @@ public class BallController : MonoBehaviour
     bool control(Vector3 ray_way){
         RaycastHit IsActive;
 
+
         if(Physics.Raycast(transform.position,ray_way,out IsActive,2.0f,fences)){
             return true;
         }
@@ -115,8 +116,9 @@ public class BallController : MonoBehaviour
             //rb.velocity= -Vector3.forward*speed;
         }   
     }
-       /* void FindIceCubes(){
+        /*void FindIceCubes(){
         icecubes=GameObject.FindGameObjectsWithTag("icecube");
+        icecubes[0].SetActive(false);
         icecubePos =icecubes[0].transform.position;
         ballPos =gameObject.transform.position;
         if (icecubes.Length > 0){
@@ -142,7 +144,13 @@ public class BallController : MonoBehaviour
     //FindIceCubes();
     Destroy (other.gameObject);
     speed=0.0f;
+    rb.Sleep();
     //ballPos=icecubePos;
     }
    }
+   /*void OnTriggerStay(Collider coll) {
+        if (coll.gameObject.tag == "icecube") {
+        FindIceCubes();
+        }   
+    }*/
 }
