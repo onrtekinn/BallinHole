@@ -6,64 +6,53 @@ using UnityEngine.UI;
 public class BallController : MonoBehaviour
 {
     public Rigidbody rb;
-    public LayerMask fences;
-    private GameObject[] icecubes;
-    //private GameObject[]coins;
+    public LayerMask fences,ball;
     int score=0;
-    public float speed =5.0f;
+    public float speed =7.0f;
     bool right,left,up,down;
-    private bool HaveSpeed;
     public Text score_txt;
-    public GameObject GameOverPanel;
-    public GameObject RetryPanel;
-    //Vector3 move;
-    //Vector3 icecubePos,ballPos;
-
-    // Start is called before the first frame update
+    public GameObject GameOverPanel,RetryPanel;
+    bool IsMoving=false;
+    //public GameBoard gameBoard;
+    
     void Start()
     {
-        //coins =GameObject.FindGameObjectsWithTag("coins");
-        //icecubes=GameObject.FindGameObjectsWithTag("icecube");
         rb=GetComponent<Rigidbody>();
-        GameOverPanel.SetActive(false);
-        RetryPanel.SetActive(false);        
-        HaveSpeed=true;
-        score_txt.text="SCORE:"+ score;
+        //gameBoard=GetComponent<GameBoard>().gameOverPanel.SetActive(true);
+        //Score.RetryPanel.SetActive(false);      
+        //Score.score_txt.text="SCORE:"+ score;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        if(Input.GetKeyDown(KeyCode.RightArrow)&& control(Vector3.right)==false)
+        if(Input.GetKey(KeyCode.RightArrow)&& control(Vector3.right)==false)
         {
             status(true,false,false,false);
         }
-         else if(Input.GetKeyDown(KeyCode.LeftArrow)&& control(-Vector3.right)==false)
+        else if(Input.GetKey(KeyCode.LeftArrow)&&control(-Vector3.right)==false)
         {
             status(false,true,false,false);
         }
-        else if(Input.GetKeyDown(KeyCode.UpArrow)&& control(Vector3.forward)==false)
+        else if(Input.GetKey(KeyCode.UpArrow)&&control(Vector3.forward)==false)
         {
             status(false,false,true,false);
         }
-        else if(Input.GetKeyDown(KeyCode.DownArrow)&& control(-Vector3.forward)==false)
+        else if(Input.GetKey(KeyCode.DownArrow)&& control(-Vector3.forward)==false)
         {
             status(false,false,false,true);
         }
     }
-    
-    private void FixedUpdate() {
-        movement();
-        SetSpeed();
-    }
 
+    private void FixedUpdate() {
+        if(IsMoving==true){
+            //StartCoroutine(StopMovementCoroutine());
+            movement();
+        } 
+    }
     bool control(Vector3 ray_way){
         RaycastHit IsActive;
-
-
-        if(Physics.Raycast(transform.position,ray_way,out IsActive,2.0f,fences)){
+        if(Physics.Raycast(transform.position,ray_way,out IsActive,1.0f,fences)){
             return true;
         }
         else
@@ -72,57 +61,44 @@ public class BallController : MonoBehaviour
         }
     }
 
-    void SetSpeed(){
-        if(speed==0.0f){
-            HaveSpeed =false;
-            //rb.velocity=Vector3.zero*speed;
-            //control=true;
-        }
-        else{
-            HaveSpeed =true;
-        }
-    }
     void status(bool go_right,bool go_left,bool go_up,bool go_down){
         right=go_right;
         left=go_left;
         up=go_up;
         down=go_down;
+        IsMoving=true;
     }
 
     void movement(){
-        if(right && HaveSpeed)
+        
+        if(right)
         {
-            speed=5.0f;
-            rb.MovePosition(transform.position + transform.right * Time.deltaTime * speed);
-            //rb.velocity=Vector3.right*speed; 
+            //transform.position = transform.position + transform.right * Time.deltaTime * speed;
+            rb.velocity=Vector3.right*speed; 
         }
-         if(left && HaveSpeed)
+        if(left )
         {
-            speed=5.0f;
-            rb.MovePosition(transform.position -transform.right * Time.deltaTime * speed);
-            //rb.velocity=-Vector3.right*speed;
+            //transform.position = transform.position -transform.right * Time.deltaTime * speed;
+            rb.velocity=-Vector3.right*speed;
+        }
+        if(up )
+        {
+            //transform.position = transform.position + transform.forward * Time.deltaTime * speed;
+            rb.velocity=Vector3.forward*speed;
+        }
+        
+        if(down)
+        {
+            //transform.position = transform.position - transform.forward * Time.deltaTime * speed;
+            rb.velocity= -Vector3.forward*speed;
+        }
+        }
 
-        }
-         if(up && HaveSpeed)
-        {
-            speed=5.0f;
-            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
-            //rb.velocity=Vector3.forward*speed;
-        }
-         if(down && HaveSpeed)
-        {
-            speed=5.0f;
-            rb.MovePosition(transform.position - transform.forward * Time.deltaTime * speed);
-            //rb.velocity= -Vector3.forward*speed;
-        }   
-    }
-        /*void FindIceCubes(){
-        icecubes=GameObject.FindGameObjectsWithTag("icecube");
-        icecubes[0].SetActive(false);
-        icecubePos =icecubes[0].transform.position;
-        ballPos =gameObject.transform.position;
-        if (icecubes.Length > 0){
-        print(icecubes[0].transform.position);}
+    /*IEnumerator StopMovementCoroutine()
+    {
+        
+        yield return new WaitForSeconds(50.0f);
+        
     }*/
     void OnTriggerEnter(Collider coll) {
         if (coll.gameObject.tag == "coins") {
@@ -130,27 +106,26 @@ public class BallController : MonoBehaviour
         score+=10;
         score_txt.text="score"+ score;
         }   
-    }
+        }
     void OnCollisionStay(Collision other) {
-    if (other.gameObject.tag == "hole") {
-    Destroy (gameObject);
-    GameOverPanel.SetActive(true);
+        if (other.gameObject.tag == "hole") {
+        Destroy (gameObject);
+        GameOverPanel.SetActive(true);
+        }
+        else if (other.gameObject.tag == "traps") {
+        Destroy (gameObject);
+        RetryPanel.SetActive(true);
+        }
+        else if (other.gameObject.tag == "icecube") {
+        Debug.Log("Trigger");
+        rb.velocity=Vector3.zero;
+        IsMoving=false;
+        Destroy (other.gameObject);
+        }
+        else if (other.gameObject.tag == "ball") {
+        Debug.Log("Trigger");
+        rb.velocity=Vector3.zero;
+        IsMoving=false;
+        }
     }
-    else if (other.gameObject.tag == "traps") {
-    Destroy (gameObject);
-    RetryPanel.SetActive(true);
-    }
-    else if (other.gameObject.tag == "icecube") {
-    //FindIceCubes();
-    Destroy (other.gameObject);
-    speed=0.0f;
-    rb.Sleep();
-    //ballPos=icecubePos;
-    }
-   }
-   /*void OnTriggerStay(Collider coll) {
-        if (coll.gameObject.tag == "icecube") {
-        FindIceCubes();
-        }   
-    }*/
 }

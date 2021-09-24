@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HoleController : MonoBehaviour
 {
-    public Rigidbody rb;
+ public Rigidbody rb;
     public LayerMask ball;
     public float speed =5.0f;
     bool right,left,up,down;
@@ -79,5 +79,10 @@ public class HoleController : MonoBehaviour
             rb.MovePosition(transform.position - transform.forward * Time.deltaTime * speed);
             //rb.velocity= -Vector3.forward*speed;
         }
+    }
+    void OnTriggerEnter(Collider other) {
+    if (other.gameObject.tag == "ball") {
+    Destroy (this.gameObject);
+    }
     }
 }

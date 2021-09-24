@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class GridLayerControl : MonoBehaviour
+public class GridLayerControl:MonoBehaviour
 {
    public int noOfLevels;
    public GameObject levelButton;
@@ -12,6 +12,8 @@ public class GridLayerControl : MonoBehaviour
    
    private void Awake() {
        levelButtons();
+       
+       
    }
    void levelButtons(){
        if(PlayerPrefs.HasKey("level"))
@@ -30,7 +32,7 @@ public class GridLayerControl : MonoBehaviour
            lvlButton.transform.SetParent(ParentPanel,false);
            Text buttonText= lvlButton.GetComponentInChildren<Text>();
            buttonText.text= (i+1).ToString();
-           
+           int levelIndex=lvlButton.transform.GetSiblingIndex();
            lvlButton.gameObject.GetComponent<Button>().onClick.AddListener(delegate{
                LevelSelected(x);
            });
